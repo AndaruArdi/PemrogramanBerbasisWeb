@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Profil Mikael Ardi Andaru</title>
+        <style>
+            body {
+                font-family: Calibri, sans-serif;
+                margin: 50px;
+                background-color: blanchedalmond;
+                font-size: 20px;
+            }
+            h1, h2 {
+                color: #333;
+            }
+            img {
+                border: 2px solid #ccc;
+                border-radius: 10px;
+            }
+            /* styling untuk tabel profil */
+            table {
+                background-color: #ccc;
+                border-collapse: collapse;
+                margin-bottom: 20px;
+            }
+            th, td {
+                border: 2px solid #333;
+                padding: 10px;
+                text-align: left;
+                vertical-align: top;
+            }
+            /* styling untuk foto anjing */
+            .gallery {
+                display: flex;
+                gap: 20px;
+            }
+            figure {
+                margin: 0;
+                text-align: center;
+                font-weight: bold;
+            }
+            nav ul {
+                list-style-type: none;
+                padding: 0;
+            }
+            nav ul li {
+                display: inline;
+                margin-right: 15px;
+            }
+            nav ul li a {
+                text-decoration: none;
+                color: #0056b3;
+                font-weight: bold;
+            }
+            aside {
+                background-color: #f4e1c1;
+                padding: 15px;
+                border-left: 5px solid #d4a373;
+                margin-top: 20px;
+            }
+            footer {
+                margin-top: 40px;
+                text-align: center;
+                font-size: 16px;
+                color: #555;
+            }
+            article {
+                background-color: #fff;
+                padding: 15px;
+                border-radius: 8px;
+                border: 1px solid #ddd;
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Selamat Datang di Profil Saya</h1>
+            <img src="ardi.jpeg" alt="Foto Ardi" width="300" height="300">
+            <!-- nav -->
+            <nav>
+                <ul>
+                    <li><a href="#tentang-saya">Tentang Saya</a></li>
+                    <li><a href="#data-diri">Data Diri</a></li>
+                    <li><a href="#hewan-peliharaan">Hewan Peliharaan</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section id="tentang-saya">
+                <h2>Tentang Saya</h2>
+                <p>Halo, nama saya Mikael Ardi Andaru. Saya biasa dipanggil Ardi.</p>
+                <p>Saya merupakan seorang mahasiswa informatika di Universitas Sanata Dharma.</p>
+                
+                <!-- buat medsos -->
+                <aside>
+                    <h3>Kontak & Media Sosial</h3>
+                    <p>Mari terhubung dengan saya melalui LinkedIn: <a href="https://www.linkedin.com/in/mikaelardi/" target="_blank">Mikael Ardi</a>.</p>
+                </aside>
+            </section>
+
+            <section id="data-diri">
+                <h2>Data Diri</h2>
+                <p>Berikut adalah beberapa informasi tentang saya:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Umur</th>
+                            <th scope="col">Lahir</th>
+                            <th scope="col">Program Studi</th>
+                            <th scope="col">Hobi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mikael Ardi Andaru</td>
+                            <td>20</td>
+                            <td>Jakarta, 22 April 2006</td>
+                            <td>Informatika</td>
+                            <td>
+                                <ol>
+                                    <li>Mancing</li>
+                                    <li>Memasak</li>
+                                    <li>Bermain Basket</li>
+                                </ol>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <section id="hewan-peliharaan">
+                <h2>Hewan Peliharaan</h2>
+                <p>Saya mempunyai 3 anjing, yaitu Alex, Bobby, dan Cici. Berikut adalah galeri mereka:</p>
+                
+                
+                <article>
+                    <h3>Galeri Foto Anjing</h3>
+                    <div class="gallery">
+                        <figure>
+                            <img src="alex.jpeg" alt="Foto anjing bernama Alex" width="200" height="200">
+                            <figcaption>Alex</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="bobby.jpeg" alt="Foto anjing bernama Bobby" width="200" height="200">
+                            <figcaption>Bobby</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="cici.jpeg" alt="Foto anjing bernama Cici" width="200" height="200">
+                            <figcaption>Cici</figcaption>
+                        </figure>
+                    </div>
+                </article>
+            </section>
+        </main>
+
+        <!-- ini buat footer -->
+        <footer>
+            <p>&copy; 2026 Ardi gans. Hak Cipta aku lindungi.</p>
+        </footer>
+    </body>
+</html>
