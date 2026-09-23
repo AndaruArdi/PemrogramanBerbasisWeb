@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+    <style>
+        .form-group {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kalkulator Tambah/Kurang</h1>
+    <form class="form-kalkulator">
+        <div class="form-group">
+            <label for="bilangan1">Bilangan 1</label>
+            <input type="text" name="bilangan1" id="bilangan1" required />
+        </div>
+
+        <div class="form-group">
+            <label for="bilangan2">Bilangan 2</label>
+            <input type="text" name="bilangan2" id="bilangan2" required />
+        </div>
+
+        <div class="form-group">
+            <input type="button" value="Tambah" onclick="hitung('tambah')" />
+            <input type="button" value="Kurang" onclick="hitung('kurang')" />
+        </div>
+
+        <div class="form-group">
+            <label for="result">Hasil</label>
+            <input type="text" name="result" id="result" readonly />
+        </div>   
+    </form>
+
+    <script>
+        function hitung(operasi) {
+            // membaca nilai dari input text dan mengubahnya menjadi angka
+            var bil1 = Number(document.getElementById('bilangan1').value);
+            var bil2 = Number(document.getElementById('bilangan2').value);
+            var hasil = 0;
+
+            // percabangan perhitungan 
+            if (operasi === 'tambah') {
+                hasil = bil1 + bil2;
+            } else if (operasi === 'kurang') {
+                hasil = bil1 - bil2;
+            }
+
+            // output untuk hasil kalkulasi ke dalam input text result
+            document.getElementById('result').value = hasil;
+        }
+    </script>
+</body>
+</html>
