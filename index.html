@@ -9,7 +9,7 @@
     <body>
         <header>
             <h1>Selamat Datang di Profil Saya</h1>
-            <!-- Tombol Dark Mode ditambahkan di sini -->
+            <!-- Tombol Dark Mode -->
             <button id="btn-tema">Mode Gelap</button>
             
             <img src="ardi.jpeg" alt="Foto Ardi" width="300" height="300">
@@ -101,6 +101,22 @@
                 <div class="daftar-portofolio">
                     <!-- Artikel akan di-render di sini menggunakan JavaScript -->
                 </div>
+            </section>
+            <!-- B.4 Langkah 3: Form Komentar HTML -->
+            <section id="komentar">
+                <h2>Tinggalkan Komentar</h2>
+                <form id="form-komentar">
+                    <input type="text" id="input-nama" placeholder="Nama Anda" required>
+                    <textarea id="input-pesan" placeholder="Tulis komentar..." required></textarea>
+                    <!-- Tugas Mandiri: pesan error di DOM -->
+                    <div id="error-pesan" style="color: red; display: none; margin-bottom: 10px; font-weight: bold;"></div>
+                    <button type="submit">Kirim</button>
+                </form>
+                
+                <!-- Tugas Mandiri: Tombol hapus semua komentar -->
+                <button id="btn-hapus-semua" style="margin-top: 15px;">Hapus Semua Komentar</button>
+                
+                <ul id="daftar-komentar" style="list-style: none; padding: 0; margin-top: 20px;"></ul>
             </section>
         </main>
 

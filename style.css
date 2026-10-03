@@ -136,8 +136,6 @@ footer {
     color: #555;
 }
 
-/* === TAMBAHAN DARI PRAKTIKUM === */
-
 /* Gaya Dark Mode */
 body.dark-mode {
     background-color: #1a1a1a;
@@ -176,6 +174,49 @@ body.dark-mode table {
 /* Class untuk hide aside */
 .tersembunyi {
     display: none;
+}
+
+/* untuk modul 5 */
+
+/* B.2 Langkah 1 - Efek Hover Artikel */
+.artikel-hover {
+    background-color: #eef4fb !important;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-mode .artikel-hover {
+    background-color: #555 !important;
+}
+
+/* Gaya untuk list komentar */
+#daftar-komentar li {
+    background: #f9f9f9;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body.dark-mode #daftar-komentar li {
+    background: #333;
+    border-color: #555;
+}
+
+form#form-komentar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form#form-komentar input, form#form-komentar textarea {
+    padding: 10px;
+    font-size: 16px;
+    font-family: inherit;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 /* --- Media Query Mobile-First --- */
