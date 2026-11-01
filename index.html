@@ -37,6 +37,11 @@
                 <aside>
                     <h3>Kontak & Media Sosial</h3>
                     <p>Mari terhubung dengan saya melalui LinkedIn: <a href="https://www.linkedin.com/in/mikaelardi/" target="_blank">Mikael Ardi</a>.</p>
+                    
+                    <!-- Modul 8 (B.6): Tentang Penulis, diisi dari API /users/1 -->
+                    <h4>Tentang Penulis</h4>
+                    <p>Nama: <span id="nama-penulis">Memuat...</span></p>
+                    <p>Email: <span id="email-penulis">Memuat...</span></p>
                 </aside>
             </section>
 
@@ -98,6 +103,8 @@
             <section id="portofolio">
                 <h2>Portofolio & Pengalaman</h2>
                 <button id="btn-tambah">Tambah Portofolio Baru</button>
+                <!-- Modul 8 (B.4): Indikator loading artikel dari API -->
+                <div id="loading"><span class="spinner"></span> Memuat artikel...</div>
                 <div class="daftar-portofolio">
                     <!-- Artikel akan di-render di sini menggunakan JavaScript -->
                 </div>
@@ -117,6 +124,10 @@
                 <!-- Tugas Mandiri: Tombol hapus semua komentar -->
                 <button id="btn-hapus-semua" style="margin-top: 15px;">Hapus Semua Komentar</button>
                 
+                <!-- Modul 8 (Tugas Mandiri): loading & pesan error untuk komentar dari API -->
+                <div id="loading-komentar"><span class="spinner"></span> Memuat komentar...</div>
+                <p id="error-komentar" class="pesan-error"></p>
+
                 <ul id="daftar-komentar" style="list-style: none; padding: 0; margin-top: 20px;"></ul>
             </section>
         </main>

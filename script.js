@@ -87,7 +87,10 @@ function buatElemenPortofolio(data) {
     tombolHapus.classList.add("btn-hapus");
 
     article.appendChild(judul);
-    article.appendChild(waktu);
+    // Modul 8: data dari API tidak punya tanggal, jadi <time> hanya dipasang kalau ada
+    if (data.tanggal) {
+        article.appendChild(waktu);
+    }
     article.appendChild(isi);
     article.appendChild(tombolLike);
     article.appendChild(tombolHapus);
@@ -96,9 +99,10 @@ function buatElemenPortofolio(data) {
 }
 
 // Render data awal saat halaman dimuat
-dataPortofolio.forEach((data) => {
-    buatElemenPortofolio(data);
-});
+// Modul 8 (B.3): forEach data statis dinonaktifkan, diganti data dari API 
+// dataPortofolio.forEach((data) => {
+//     buatElemenPortofolio(data);
+// });
 
 // Tombol Tambah Portofolio
 const tombolTambah = document.querySelector("#btn-tambah");
@@ -256,3 +260,116 @@ document.addEventListener("keydown", (e) => {
         }
     }
 });
+
+
+// 6. FETCH API & JSON (MODUL 8)
+const API_URL = "https://jsonplaceholder.typicode.com";
+
+// B.2 Langkah 1: Fetch dasar ke console (cek hasilnya di tab Console & Network)
+async function ujiFetch() {
+    const response = await fetch(`${API_URL}/posts?_limit=3`);
+    const data = await response.json();
+    console.log(data);
+}
+ujiFetch();
+
+// B.3 - B.5 Langkah 2-4: Ganti data artikel dari API + loading + penanganan error
+async function muatArtikelDariAPI() {
+    const loading = document.querySelector("#loading");
+    loading.style.display = "block";
+
+    try {
+        const response = await fetch(`${API_URL}/posts?_limit=5`);
+
+        // fetch tidak otomatis error di status 404/500, jadi dicek manual
+        if (!response.ok) {
+            throw new Error("Status: " + response.status);
+        }
+
+        const daftarPost = await response.json();
+
+        // Memakai buatElemenPortofolio() supaya tombol Like/Hapus (Modul 4)
+        // dan penyimpanan like ke localStorage (Modul 6) tetap jalan
+        daftarPost.forEach((post) => {
+            buatElemenPortofolio({
+                judul: post.title,
+                isi: post.body
+            });
+        });
+    } catch (error) {
+        containerPortofolio.innerHTML =
+            "<p>Gagal memuat artikel, silakan coba lagi nanti.</p>";
+        console.error("Gagal mengambil data:", error);
+    } finally {
+        // finally selalu jalan, baik berhasil maupun gagal
+        loading.style.display = "none";
+    }
+}
+muatArtikelDariAPI();
+
+// B.6 Langkah 5: Data pengguna untuk aside (Tentang Penulis)
+async function muatProfilPenulis() {
+    const namaPenulis = document.querySelector("#nama-penulis");
+    const emailPenulis = document.querySelector("#email-penulis");
+
+    try {
+        const response = await fetch(`${API_URL}/users/1`);
+        if (!response.ok) throw new Error("Status: " + response.status);
+
+        const user = await response.json();
+        namaPenulis.textContent = user.name;
+        emailPenulis.textContent = user.email;
+    } catch (error) {
+        namaPenulis.textContent = "Tidak tersedia";
+        emailPenulis.textContent = "Tidak tersedia";
+        console.error("Gagal memuat profil penulis:", error);
+    }
+}
+muatProfilPenulis();
+
+// B.7 Tugas Mandiri: komentar awal dari endpoint /posts/1/comments
+async function muatKomentarDariAPI() {
+    const loadingKomentar = document.querySelector("#loading-komentar");
+    const errorKomentar = document.querySelector("#error-komentar");
+
+    loadingKomentar.style.display = "block";
+    errorKomentar.style.display = "none";
+
+    try {
+        const response = await fetch(`${API_URL}/posts/1/comments`);
+        if (!response.ok) throw new Error("Status: " + response.status);
+
+        const daftarKomentarAPI = await response.json();
+        const fragment = document.createDocumentFragment();
+
+        daftarKomentarAPI.forEach((komentar) => {
+            const itemKomentar = document.createElement("li");
+
+            // dataset.nama & dataset.pesan sengaja tidak diisi, supaya komentar dari API
+            // tidak ikut tersimpan ke localStorage oleh perbaruiStorageKomentar()
+            const spanTeks = document.createElement("span");
+            const nama = document.createElement("strong");
+            nama.textContent = komentar.email;
+            spanTeks.appendChild(nama);
+            spanTeks.appendChild(document.createTextNode(": " + komentar.body));
+
+            const tombolHapusKomentar = document.createElement("button");
+            tombolHapusKomentar.textContent = "Hapus";
+            tombolHapusKomentar.classList.add("hapus-komentar");
+
+            itemKomentar.appendChild(spanTeks);
+            itemKomentar.appendChild(tombolHapusKomentar);
+            fragment.appendChild(itemKomentar);
+        });
+
+        // Komentar API ditaruh di paling atas sebagai komentar awal
+        daftarKomentar.prepend(fragment);
+    } catch (error) {
+        errorKomentar.textContent = "Gagal memuat komentar awal, silakan coba lagi nanti.";
+        errorKomentar.style.display = "block";
+        console.error("Gagal mengambil komentar:", error);
+    } finally {
+        loadingKomentar.style.display = "none";
+    }
+}
+muatKomentarDariAPI();
